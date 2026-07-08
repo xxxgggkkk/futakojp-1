@@ -1,17 +1,17 @@
-export function formatJpy(value: number) {
-  return new Intl.NumberFormat("ja-JP", {
+export function formatTwd(value: number) {
+  return new Intl.NumberFormat("zh-TW", {
     style: "currency",
-    currency: "JPY",
+    currency: "TWD",
     maximumFractionDigits: 0
   }).format(value);
 }
 
 export function stockLabel(status: string) {
   const labels: Record<string, string> = {
-    AVAILABLE: "可代购",
-    LIMITED: "少量可代购",
-    PREORDER: "可预订",
-    UNAVAILABLE: "暂不可代购"
+    AVAILABLE: "可代購",
+    LIMITED: "少量可代購",
+    PREORDER: "可預訂",
+    UNAVAILABLE: "暫不可代購"
   };
   return labels[status] ?? status;
 }

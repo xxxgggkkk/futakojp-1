@@ -12,7 +12,7 @@ export async function getSiteSetting() {
     update: {},
     create: {
       id: "site",
-      siteName: "GAO代购",
+      siteName: "GAO代購",
       wechatId: "gao-daigou",
       lineId: "gao-daigou"
     }

@@ -1,14 +1,14 @@
-# GAO代购商品展示网站
+# GAO代購商品展示網站
 
-这是一个日本代购商品展示网站，不包含注册、购物车、下单、在线支付、订单和物流功能。客户浏览商品后，通过微信、LINE、WhatsApp 或邮箱联系代购。
+這是一個面向台灣客人的日本代購商品展示網站，不包含註冊、購物車、下單、線上付款、訂單和物流功能。客人瀏覽商品後，透過微信、LINE、WhatsApp 或 Email 聯絡代購。
 
 ## 功能
 
-- 首页：Logo、网站名称、搜索、分类导航、Banner、推荐商品、热门商品、最新商品、商品卡片瀑布流。
-- 商品：分类页、搜索页、详情页、多图展示、参考价格、品牌、到货周期、代购状态、介绍、规格、注意事项。
-- 后台：管理员登录、商品新增/编辑/删除/上架/下架、分类管理、Banner 管理、网站设置。
-- 图片：支持 JPG、PNG、WEBP，多图上传、拖拽上传、预览。
-- SEO：自定义标题、Meta Description、Open Graph、`sitemap.xml`、`robots.txt`。
+- 首頁：Logo、網站名稱、搜尋、分類導覽、Banner、推薦商品、熱門商品、最新商品、商品卡片瀑布流。
+- 商品：分類頁、搜尋頁、詳情頁、多圖展示、台幣參考價格、品牌、到貨週期、代購狀態、介紹、規格、注意事項。
+- 後台：管理員登入、商品新增/編輯/刪除/上架/下架、分類管理、Banner 管理、網站設定。
+- 圖片：支援 JPG、PNG、WEBP，多圖上傳、拖曳上傳、預覽。
+- SEO：自訂標題、Meta Description、Open Graph、`sitemap.xml`、`robots.txt`。
 
 ## 技术栈
 
@@ -16,106 +16,96 @@
 - React + TypeScript
 - Tailwind CSS
 - Prisma ORM
-- SQLite 开发数据库，可切换 PostgreSQL
-- Cookie 管理员认证
-- 本地图片存储，可后续替换为 Vercel Blob
+- SQLite 開發資料庫，可切換 PostgreSQL
+- Cookie 管理員認證
+- 本地圖片儲存，Vercel 可使用 Vercel Blob
 
-## 本地运行
+## 本地執行
 
-1. 安装依赖：
+1. 安裝依賴：
 
 ```bash
 npm install
 ```
 
-2. 创建环境变量：
+2. 建立環境變數：
 
 ```bash
 cp .env.example .env
 ```
 
-建议修改 `.env` 中的管理员账号、密码和 `AUTH_SECRET`。
+建議修改 `.env` 中的管理員帳號、密碼和 `AUTH_SECRET`。
 
-3. 初始化数据库并导入示例数据：
+3. 初始化資料庫並匯入範例資料：
 
 ```bash
 npm run db:push
 npm run db:seed
 ```
 
-4. 启动开发服务器：
+4. 啟動開發伺服器：
 
 ```bash
 npm run dev
 ```
 
-打开 `http://localhost:3000` 查看网站。
+打開 `http://localhost:3000` 查看網站。
 
-## 默认后台
+## 預設後台
 
-- 后台地址：`/admin`
-- 默认邮箱：`admin@example.com`
-- 默认密码：`admin123456`
+- 後台地址：`/admin`
+- 預設 Email：`admin@example.com`
+- 預設密碼：`admin123456`
 
-如果你在 `.env` 中设置了 `ADMIN_EMAIL` 和 `ADMIN_PASSWORD`，种子数据会使用你的设置。
+如果你在 `.env` 中設定了 `ADMIN_EMAIL` 和 `ADMIN_PASSWORD`，種子資料會使用你的設定。
 
-## 后台使用
+## 後台使用
 
-- 商品管理：新增、编辑、删除、上架、下架商品，维护价格、库存状态、介绍、规格和图片。
-- 分类管理：新增、修改、删除分类，首页导航会自动更新。
-- 首页 Banner：维护首页大图、文案、链接和显示状态。
-- 网站设置：修改网站名称、SEO、微信、LINE、WhatsApp、邮箱、二维码和 Logo。
+- 商品管理：新增、編輯、刪除、上架、下架商品，維護台幣價格、庫存狀態、介紹、規格和圖片。
+- 分類管理：新增、修改、刪除分類，首頁導覽會自動更新。
+- 首頁 Banner：維護首頁大圖、文案、連結和顯示狀態。
+- 網站設定：修改網站名稱、SEO、微信、LINE、WhatsApp、Email、QR Code 和 Logo。
 
 ## 部署到 Vercel
 
-正式部署请使用 PostgreSQL 和 Vercel Blob。项目已包含 `prisma/schema.postgres.prisma` 和 `vercel.json`，Vercel 构建时会自动切换到 PostgreSQL schema。
+正式部署請使用 Prisma Postgres 和 Vercel Blob。專案已包含 `prisma/schema.postgres.prisma` 和 `vercel.json`，Vercel 建置時會自動切換到 PostgreSQL schema，並自動建表與匯入範例資料。
 
-1. 将项目上传到 GitHub。
-2. 在 Vercel 导入项目。
-3. 在 Vercel 创建 Postgres 数据库，并把它连接到当前项目。
-4. 在 Vercel 创建 Blob Store，并把它连接到当前项目。
-5. 添加或确认环境变量：
+1. 將專案上傳到 GitHub。
+2. 在 Vercel 匯入專案。
+3. 在 Vercel 建立 Prisma Postgres 資料庫，並把它連接到目前專案。
+4. 可選：在 Vercel 建立 Blob Store，並把它連接到目前專案。
+5. 新增或確認環境變數：
 
 ```bash
-DATABASE_URL="Vercel Postgres 自动生成或你自己的 PostgreSQL 地址"
-ADMIN_EMAIL="你的管理员邮箱"
-ADMIN_PASSWORD="你的强密码"
-AUTH_SECRET="一段足够长的随机字符串"
-NEXT_PUBLIC_SITE_URL="你的 Vercel 访问地址"
-BLOB_READ_WRITE_TOKEN="Vercel Blob 自动生成"
+DATABASE_PRISMA_DATABASE_URL="Prisma Postgres 自動生成"
+ADMIN_EMAIL="你的管理員 Email"
+ADMIN_PASSWORD="你的強密碼"
+AUTH_SECRET="一段足夠長的隨機字串"
+NEXT_PUBLIC_SITE_URL="你的 Vercel 網址"
+BLOB_READ_WRITE_TOKEN="Vercel Blob 自動生成，可選"
 ```
 
-不要在正式部署环境设置 `BLOCK_PUBLIC_ADMIN=true`，否则公网后台会被拦截。这个变量只用于临时本地隧道展示。
+不要在正式部署環境設定 `BLOCK_PUBLIC_ADMIN=true`，否則公開後台會被攔截。這個變數只用於臨時本地展示。
 
-Vercel 会读取 `vercel.json`，使用下面的构建命令：
+Vercel 會讀取 `vercel.json`，使用下面的建置命令：
 
 ```bash
 npm run vercel-build
 ```
 
-部署完成后，线上数据库需要初始化一次。可以在本机临时把 `DATABASE_URL` 设置为 Vercel Postgres 地址后运行：
+部署完成後，線上資料庫會在建置流程中自動初始化。後台上傳圖片時，如果存在 `BLOB_READ_WRITE_TOKEN`，圖片會儲存到 Vercel Blob；本地開發沒有這個 token 時，會繼續儲存到 `public/uploads`。
 
-```bash
-cp prisma/schema.postgres.prisma prisma/schema.prisma
-npm run db:push
-npm run db:seed
-```
+## 切換 PostgreSQL
 
-如果你不想在本机操作线上数据库，也可以在 Vercel 的部署环境或其他安全终端里执行同样命令。
-
-后台上传图片时，如果存在 `BLOB_READ_WRITE_TOKEN`，图片会保存到 Vercel Blob；本地开发没有这个 token 时，会继续保存到 `public/uploads`。
-
-## 切换 PostgreSQL
-
-1. 将 `prisma/schema.prisma` 中 datasource provider 从 `sqlite` 改为 `postgresql`。
-2. 把 `DATABASE_URL` 改为 PostgreSQL 连接字符串。
-3. 运行：
+1. 將 `prisma/schema.prisma` 中 datasource provider 從 `sqlite` 改為 `postgresql`。
+2. 把資料庫環境變數改為 PostgreSQL 連線字串。
+3. 執行：
 
 ```bash
 npm run db:push
 npm run db:seed
 ```
 
-## 后续扩展建议
+## 後續擴充建議
 
-当前结构已预留商品状态、库存状态、分类、图片、站点设置和后台认证。未来可继续增加在线下单、支付、用户系统、收藏、多语言、汇率换算、价格币种切换、标签和库存同步。
+目前結構已預留商品狀態、庫存狀態、分類、圖片、站點設定和後台認證。未來可繼續增加線上下單、付款、會員系統、收藏、多語言、匯率換算、價格幣別切換、標籤和庫存同步。

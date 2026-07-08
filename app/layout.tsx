@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: setting.metaTitle,
       description: setting.metaDescription,
       type: "website",
-      locale: "zh_CN",
+      locale: "zh_TW",
       siteName: setting.siteName
     }
   };
@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-TW">
       <body>{children}</body>
     </html>
   );

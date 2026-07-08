@@ -25,17 +25,17 @@ export default async function HomePage() {
             <Link href={hero?.linkUrl || "#latest"} className="relative min-h-[340px] overflow-hidden rounded-lg bg-neutral-100">
               <Image
                 src={hero?.imageUrl || fallbackImages[0]}
-                alt={hero?.title || "日本代购精选商品"}
+                alt={hero?.title || "日本代購精選商品"}
                 fill
                 priority
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 max-w-xl p-8 text-white">
-                <p className="text-sm font-medium">日本现货与可预约商品</p>
-                <h1 className="mt-3 text-4xl font-semibold tracking-normal sm:text-5xl">{hero?.title || "GAO代购"}</h1>
+                <p className="text-sm font-medium">日本現貨與可預約商品</p>
+                <h1 className="mt-3 text-4xl font-semibold tracking-normal sm:text-5xl">{hero?.title || "GAO代購"}</h1>
                 <p className="mt-4 text-sm leading-6 text-white/85">
-                  {hero?.subtitle || "精选日本美妆、药妆、零食、数码与生活好物。仅展示目录，咨询后确认代购。"}
+                  {hero?.subtitle || "精選日本美妝、藥妝、零食、3C 與生活好物。僅展示目錄，諮詢後確認代購。"}
                 </p>
               </div>
             </Link>
@@ -59,9 +59,9 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <ProductSection id="recommended" title="推荐商品" subtitle="适合作为首次咨询的热门选择" products={recommended} />
-        <ProductSection id="hot" title="热门商品" subtitle="近期浏览和咨询较多的日本好物" products={hot} muted />
-        <ProductSection id="latest" title="最新商品" subtitle="后台新上架商品会优先显示在这里" products={latest} />
+        <ProductSection id="recommended" title="推薦商品" subtitle="適合作為首次諮詢的熱門選擇" products={recommended} />
+        <ProductSection id="hot" title="熱門商品" subtitle="近期瀏覽和諮詢較多的日本好物" products={hot} muted />
+        <ProductSection id="latest" title="最新商品" subtitle="後台新上架商品會優先顯示在這裡" products={latest} />
       </main>
       <ContactPanel />
     </>

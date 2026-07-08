@@ -16,7 +16,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       <SiteHeader />
       <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-semibold text-ink">{category.name}</h1>
-        <p className="mt-2 text-sm text-muted">{category.description || "日本好物分类展示，可联系确认库存和到货周期。"}</p>
+        <p className="mt-2 text-sm text-muted">{category.description || "日本好物分類展示，可聯絡確認庫存和到貨週期。"}</p>
         <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />

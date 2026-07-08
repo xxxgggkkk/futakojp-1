@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Product, Category, Image as ProductImage } from "@prisma/client";
-import { formatJpy, stockLabel } from "@/lib/format";
+import { formatTwd, stockLabel } from "@/lib/format";
 import { fallbackImages } from "@/data/fallback";
 
 type ProductWithRelations = Product & {
@@ -39,12 +39,12 @@ export function ProductCard({ product }: { product: ProductWithRelations }) {
           <p className="mt-1 line-clamp-1 text-xs text-muted">{product.brand}</p>
         </div>
         <div className="flex items-center justify-between">
-          <strong className="text-base text-ink">{formatJpy(product.priceJpy)}</strong>
+          <strong className="text-base text-ink">{formatTwd(product.priceJpy)}</strong>
           <Link
             href={`/products/${product.slug}`}
             className="rounded-md bg-ink px-3 py-2 text-xs font-medium text-white transition hover:bg-gold"
           >
-            查看详情
+            查看詳情
           </Link>
         </div>
       </div>

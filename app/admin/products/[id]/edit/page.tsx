@@ -12,7 +12,7 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
   if (!product) notFound();
   return (
     <AdminShell>
-      <h1 className="mb-6 text-2xl font-semibold text-ink">编辑商品</h1>
+      <h1 className="mb-6 text-2xl font-semibold text-ink">編輯商品</h1>
       <ProductForm product={product} categories={categories} />
     </AdminShell>
   );

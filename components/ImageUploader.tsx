@@ -34,7 +34,7 @@ export function ImageUploader({ name = "images", defaultValue = "" }: { name?: s
         }}
       >
         <UploadCloud className="h-8 w-8 text-muted" />
-        <span className="mt-3 text-sm font-medium text-ink">{busy ? "上传中..." : "点击或拖拽上传 JPG / PNG / WEBP"}</span>
+        <span className="mt-3 text-sm font-medium text-ink">{busy ? "上傳中..." : "點擊或拖曳上傳 JPG / PNG / WEBP"}</span>
         <input type="file" accept="image/jpeg,image/png,image/webp" multiple className="sr-only" onChange={(event) => upload(event.target.files)} />
       </label>
       <textarea
@@ -43,7 +43,7 @@ export function ImageUploader({ name = "images", defaultValue = "" }: { name?: s
         onChange={(event) => setValue(event.target.value)}
         rows={5}
         className="w-full rounded-md border border-line px-3 py-2 text-sm outline-none focus:border-ink"
-        placeholder="也可以粘贴图片 URL，每行一张"
+        placeholder="也可以貼上圖片 URL，每行一張"
       />
       {value && (
         <div className="grid grid-cols-4 gap-2">

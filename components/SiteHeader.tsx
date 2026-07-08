@@ -20,7 +20,7 @@ export async function SiteHeader() {
             <SearchBox />
           </div>
           <Link href="/admin" className="rounded-md border border-line px-3 py-2 text-sm text-ink hover:border-ink">
-            管理后台
+            管理後台
           </Link>
         </div>
         <div className="md:hidden">

@@ -10,16 +10,16 @@ export default async function AdminPage() {
 
   return (
     <AdminShell>
-      <h1 className="text-2xl font-semibold text-ink">后台概览</h1>
+      <h1 className="text-2xl font-semibold text-ink">後台概覽</h1>
       <div className="mt-6 grid gap-4 sm:grid-cols-3">
-        <Stat label="商品总数" value={products} />
-        <Stat label="分类数量" value={categories} />
+        <Stat label="商品總數" value={products} />
+        <Stat label="分類數量" value={categories} />
         <Stat label="Banner 数量" value={banners} />
       </div>
       <section className="mt-8 rounded-lg border border-line bg-white p-5">
         <h2 className="text-lg font-semibold text-ink">使用提示</h2>
         <p className="mt-2 text-sm leading-6 text-muted">
-          这里维护的商品只会作为展示目录出现。客户在商品详情页点击“联系代购”后，通过你设置的微信、LINE、WhatsApp 或邮箱咨询。
+          這裡維護的商品只會作為展示目錄出現。客人在商品詳情頁點擊「聯絡代購」後，會透過你設定的微信、LINE、WhatsApp 或 Email 諮詢。
         </p>
       </section>
     </AdminShell>

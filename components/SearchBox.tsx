@@ -20,7 +20,7 @@ export function SearchBox({ defaultValue = "" }: { defaultValue?: string }) {
       <input
         value={value}
         onChange={(event) => setValue(event.target.value)}
-        placeholder="搜索商品、品牌、分类"
+        placeholder="搜尋商品、品牌、分類"
         className="h-11 w-full rounded-md border border-line bg-white pl-11 pr-4 text-sm outline-none transition focus:border-ink"
       />
     </form>

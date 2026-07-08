@@ -10,9 +10,9 @@ export default async function CategoriesPage() {
 
   return (
     <AdminShell>
-      <h1 className="text-2xl font-semibold text-ink">分类管理</h1>
+      <h1 className="text-2xl font-semibold text-ink">分類管理</h1>
       <section className="mt-6 rounded-lg border border-line bg-white p-5">
-        <h2 className="text-lg font-semibold text-ink">新增分类</h2>
+        <h2 className="text-lg font-semibold text-ink">新增分類</h2>
         <CategoryForm />
       </section>
       <div className="mt-6 space-y-3">
@@ -25,7 +25,7 @@ export default async function CategoriesPage() {
               </div>
               <form action={deleteCategoryAction}>
                 <input type="hidden" name="id" value={category.id} />
-                <button className="rounded-md border border-red-200 px-3 py-2 text-sm text-red-600 hover:border-red-500">删除</button>
+                <button className="rounded-md border border-red-200 px-3 py-2 text-sm text-red-600 hover:border-red-500">刪除</button>
               </form>
             </div>
             <CategoryForm category={category} />
@@ -40,11 +40,11 @@ function CategoryForm({ category }: { category?: { id: string; name: string; slu
   return (
     <form action={saveCategoryAction} className="mt-4 grid gap-4 md:grid-cols-[1fr_1fr_120px_auto]">
       <input type="hidden" name="id" value={category?.id || ""} />
-      <input name="name" defaultValue={category?.name} placeholder="分类名称" required className="h-10 rounded-md border border-line px-3 outline-none focus:border-ink" />
+      <input name="name" defaultValue={category?.name} placeholder="分類名稱" required className="h-10 rounded-md border border-line px-3 outline-none focus:border-ink" />
       <input name="slug" defaultValue={category?.slug} placeholder="slug" className="h-10 rounded-md border border-line px-3 outline-none focus:border-ink" />
       <input name="sortOrder" type="number" defaultValue={category?.sortOrder || 0} placeholder="排序" className="h-10 rounded-md border border-line px-3 outline-none focus:border-ink" />
-      <button className="rounded-md bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-gold">保存</button>
-      <input name="description" defaultValue={category?.description || ""} placeholder="分类描述" className="h-10 rounded-md border border-line px-3 outline-none focus:border-ink md:col-span-4" />
+      <button className="rounded-md bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-gold">儲存</button>
+      <input name="description" defaultValue={category?.description || ""} placeholder="分類描述" className="h-10 rounded-md border border-line px-3 outline-none focus:border-ink md:col-span-4" />
     </form>
   );
 }

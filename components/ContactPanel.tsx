@@ -8,9 +8,9 @@ export async function ContactPanel() {
     <section className="border-t border-line bg-neutral-50">
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_2fr] lg:px-8">
         <div>
-          <h2 className="text-2xl font-semibold text-ink">联系代购</h2>
+          <h2 className="text-2xl font-semibold text-ink">聯絡代購</h2>
           <p className="mt-2 text-sm leading-6 text-muted">
-            本站仅展示可咨询商品，不提供在线下单和支付。请通过微信、LINE 或邮箱确认价格、库存和到货周期。
+            本站僅展示可諮詢商品，不提供線上下單和付款。請透過微信、LINE 或 Email 確認價格、庫存和到貨週期。
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -38,7 +38,7 @@ export async function ContactPanel() {
           {setting.email && (
             <a className="rounded-lg border border-line bg-white p-4 hover:border-ink" href={`mailto:${setting.email}`}>
               <Mail className="mb-3 h-5 w-5 text-matcha" />
-              <p className="text-sm font-semibold text-ink">邮箱</p>
+              <p className="text-sm font-semibold text-ink">Email</p>
               <p className="mt-1 break-all text-xs text-muted">{setting.email}</p>
             </a>
           )}

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ContactPanel } from "@/components/ContactPanel";
 import { SiteHeader } from "@/components/SiteHeader";
 import { fallbackImages } from "@/data/fallback";
-import { formatJpy, stockLabel } from "@/lib/format";
+import { formatTwd, stockLabel } from "@/lib/format";
 import { productInclude } from "@/lib/queries";
 import { prisma } from "@/lib/prisma";
 
@@ -56,20 +56,20 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <p className="mt-3 text-sm text-muted">{product.shortIntro}</p>
             <div className="mt-6 grid gap-3 rounded-lg border border-line bg-neutral-50 p-5 sm:grid-cols-2">
               <Info label="品牌" value={product.brand} />
-              <Info label="日本参考价格" value={formatJpy(product.priceJpy)} />
-              <Info label="到货周期" value={product.deliveryCycle} />
-              <Info label="是否可代购" value={stockLabel(product.stockStatus)} />
+              <Info label="台幣參考價格" value={formatTwd(product.priceJpy)} />
+              <Info label="到貨週期" value={product.deliveryCycle} />
+              <Info label="是否可代購" value={stockLabel(product.stockStatus)} />
             </div>
             <a
               href="#contact"
               className="mt-6 inline-flex w-full items-center justify-center rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-gold sm:w-auto"
             >
-              联系代购
+              聯絡代購
             </a>
             <div className="mt-8 space-y-6 text-sm leading-7 text-ink">
-              <DetailBlock title="商品介绍" content={product.description} />
-              <DetailBlock title="商品规格" content={product.specs} />
-              {product.notes && <DetailBlock title="注意事项" content={product.notes} />}
+              <DetailBlock title="商品介紹" content={product.description} />
+              <DetailBlock title="商品規格" content={product.specs} />
+              {product.notes && <DetailBlock title="注意事項" content={product.notes} />}
             </div>
           </section>
         </div>
