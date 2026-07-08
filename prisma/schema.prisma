@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  sortOrder   Int       @default(0)
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Product {
+  id              String      @id @default(cuid())
+  name            String
+  slug            String      @unique
+  brand           String
+  categoryId      String
+  category        Category    @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  priceJpy        Int
+  deliveryCycle   String
+  stockStatus     String      @default("AVAILABLE")
+  status          String      @default("ACTIVE")
+  isRecommended   Boolean     @default(false)
+  isHot           Boolean     @default(false)
+  shortIntro      String
+  description     String
+  specs           String
+  notes           String?
+  images          Image[]
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@index([categoryId])
+  @@index([status])
+}
+
+model Image {
+  id        String   @id @default(cuid())
+  url       String
+  alt       String?
+  sortOrder Int      @default(0)
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model Banner {
+  id        String   @id @default(cuid())
+  title     String
+  subtitle  String?
+  imageUrl  String
+  linkUrl   String?
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SiteSetting {
+  id              String   @id @default("site")
+  siteName        String   @default("GAO代购")
+  logoUrl         String?
+  metaTitle       String   @default("GAO代购｜日本好物展示目录")
+  metaDescription String   @default("精选日本美妆、药妆、零食、数码、家居和限定商品展示，支持微信、LINE 咨询代购。")
+  wechatId        String?
+  wechatQrUrl     String?
+  lineId          String?
+  lineQrUrl       String?
+  whatsapp        String?
+  email           String?
+  updatedAt       DateTime @updatedAt
+}
