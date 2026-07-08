@@ -18,7 +18,7 @@ export default async function SettingsPage() {
             <textarea name="metaDescription" defaultValue={setting.metaDescription} rows={4} className="mt-2 w-full rounded-md border border-line px-3 py-2 outline-none focus:border-ink" />
           </label>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="微信號" name="wechatId" defaultValue={setting.wechatId || ""} />
+            <Field label="Instagram 帳號" name="wechatId" defaultValue={setting.wechatId || ""} />
             <Field label="LINE ID" name="lineId" defaultValue={setting.lineId || ""} />
             <Field label="WhatsApp" name="whatsapp" defaultValue={setting.whatsapp || ""} />
             <Field label="Email" name="email" defaultValue={setting.email || ""} />
@@ -31,7 +31,7 @@ export default async function SettingsPage() {
             <ImageUploader name="logoUrl" defaultValue={setting.logoUrl || ""} />
           </section>
           <section className="rounded-lg border border-line bg-white p-5">
-            <h2 className="mb-3 text-sm font-semibold text-ink">微信 QR Code</h2>
+            <h2 className="mb-3 text-sm font-semibold text-ink">Instagram QR Code</h2>
             <ImageUploader name="wechatQrUrl" defaultValue={setting.wechatQrUrl || ""} />
           </section>
           <section className="rounded-lg border border-line bg-white p-5">

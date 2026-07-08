@@ -1,8 +1,14 @@
-import { Mail, MessageCircle, Phone } from "lucide-react";
+import { Instagram, Mail, MessageCircle, Phone } from "lucide-react";
 import { getSiteSetting } from "@/lib/queries";
 
 export async function ContactPanel() {
   const setting = await getSiteSetting();
+  const instagram = setting.wechatId?.trim();
+  const instagramUrl = instagram
+    ? instagram.startsWith("http")
+      ? instagram
+      : `https://www.instagram.com/${instagram.replace(/^@/, "")}`
+    : "";
 
   return (
     <section className="border-t border-line bg-neutral-50">
@@ -10,15 +16,15 @@ export async function ContactPanel() {
         <div>
           <h2 className="text-2xl font-semibold text-ink">聯絡代購</h2>
           <p className="mt-2 text-sm leading-6 text-muted">
-            本站僅展示可諮詢商品，不提供線上下單和付款。請透過微信、LINE 或 Email 確認價格、庫存和到貨週期。
+            本站僅展示可諮詢商品，不提供線上下單和付款。請透過 Instagram、LINE 或 Email 確認價格、庫存和到貨週期。
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {setting.wechatId && (
-            <a className="rounded-lg border border-line bg-white p-4 hover:border-ink" href={`weixin://`}>
-              <MessageCircle className="mb-3 h-5 w-5 text-matcha" />
-              <p className="text-sm font-semibold text-ink">微信</p>
-              <p className="mt-1 break-all text-xs text-muted">{setting.wechatId}</p>
+          {instagram && (
+            <a className="rounded-lg border border-line bg-white p-4 hover:border-ink" href={instagramUrl} target="_blank" rel="noreferrer">
+              <Instagram className="mb-3 h-5 w-5 text-matcha" />
+              <p className="text-sm font-semibold text-ink">Instagram</p>
+              <p className="mt-1 break-all text-xs text-muted">{instagram}</p>
             </a>
           )}
           {setting.lineId && (

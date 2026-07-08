@@ -78,7 +78,7 @@ model SiteSetting {
   siteName        String   @default("GAO代購")
   logoUrl         String?
   metaTitle       String   @default("GAO代購｜日本好物展示目錄")
-  metaDescription String   @default("精選日本美妝、藥妝、零食、3C、居家和限定商品展示，台幣參考價，支援微信、LINE 諮詢代購。")
+  metaDescription String   @default("精選日本美妝、藥妝、零食、3C、居家和限定商品展示，台幣參考價，支援 Instagram、LINE 諮詢代購。")
   wechatId        String?
   wechatQrUrl     String?
   lineId          String?

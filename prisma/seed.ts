@@ -30,13 +30,13 @@ async function main() {
     update: {
       siteName: "GAO代購",
       metaTitle: "GAO代購｜日本好物展示目錄",
-      metaDescription: "精選日本美妝、藥妝、零食、3C、居家和限定商品展示，台幣參考價，支援微信、LINE 諮詢代購。"
+      metaDescription: "精選日本美妝、藥妝、零食、3C、居家和限定商品展示，台幣參考價，支援 Instagram、LINE 諮詢代購。"
     },
     create: {
       id: "site",
       siteName: "GAO代購",
       metaTitle: "GAO代購｜日本好物展示目錄",
-      metaDescription: "精選日本美妝、藥妝、零食、3C、居家和限定商品展示，台幣參考價，支援微信、LINE 諮詢代購。",
+      metaDescription: "精選日本美妝、藥妝、零食、3C、居家和限定商品展示，台幣參考價，支援 Instagram、LINE 諮詢代購。",
       wechatId: "gao-daigou",
       lineId: "gao-daigou",
       email: "hello@example.com"
@@ -68,18 +68,18 @@ async function main() {
   await prisma.banner.upsert({
     where: { id: "seed-banner-main" },
     update: {
-      title: "日本當季好物精選",
-      subtitle: "從藥妝店、百貨到限定周邊，展示可諮詢代購商品。",
-      imageUrl: images.beauty,
+      title: "雙子日本代購",
+      subtitle: "私訊確認商品後安排登記採買，訂金與餘額流程清楚透明。",
+      imageUrl: "/images/home-order-guide.jpg",
       linkUrl: "/search",
       isActive: true,
       sortOrder: 0
     },
     create: {
       id: "seed-banner-main",
-      title: "日本當季好物精選",
-      subtitle: "從藥妝店、百貨到限定周邊，展示可諮詢代購商品。",
-      imageUrl: images.beauty,
+      title: "雙子日本代購",
+      subtitle: "私訊確認商品後安排登記採買，訂金與餘額流程清楚透明。",
+      imageUrl: "/images/home-order-guide.jpg",
       linkUrl: "/search",
       isActive: true,
       sortOrder: 0

@@ -19,7 +19,7 @@ export default async function AdminPage() {
       <section className="mt-8 rounded-lg border border-line bg-white p-5">
         <h2 className="text-lg font-semibold text-ink">使用提示</h2>
         <p className="mt-2 text-sm leading-6 text-muted">
-          這裡維護的商品只會作為展示目錄出現。客人在商品詳情頁點擊「聯絡代購」後，會透過你設定的微信、LINE、WhatsApp 或 Email 諮詢。
+          這裡維護的商品只會作為展示目錄出現。客人在商品詳情頁點擊「聯絡代購」後，會透過你設定的 Instagram、LINE、WhatsApp 或 Email 諮詢。
         </p>
       </section>
     </AdminShell>

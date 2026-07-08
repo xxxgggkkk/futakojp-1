@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ProductCard } from "@/components/ProductCard";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ContactPanel } from "@/components/ContactPanel";
-import { fallbackImages } from "@/data/fallback";
 import { getActiveProducts, getBanners, getCategories } from "@/lib/queries";
 
 export default async function HomePage() {
@@ -24,8 +23,8 @@ export default async function HomePage() {
           <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[1.6fr_1fr] lg:px-8">
             <Link href={hero?.linkUrl || "#latest"} className="relative min-h-[340px] overflow-hidden rounded-lg bg-neutral-100">
               <Image
-                src={hero?.imageUrl || fallbackImages[0]}
-                alt={hero?.title || "日本代購精選商品"}
+                src={hero?.imageUrl || "/images/home-order-guide.jpg"}
+                alt={hero?.title || "雙子日本代購下單流程"}
                 fill
                 priority
                 className="object-cover"
