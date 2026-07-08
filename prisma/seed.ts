@@ -27,11 +27,7 @@ async function main() {
 
   await prisma.siteSetting.upsert({
     where: { id: "site" },
-    update: {
-      siteName: "GAO代購",
-      metaTitle: "GAO代購｜日本好物展示目錄",
-      metaDescription: "精選日本美妝、藥妝、零食、3C、居家和限定商品展示，台幣參考價，支援 Instagram、LINE 諮詢代購。"
-    },
+    update: {},
     create: {
       id: "site",
       siteName: "GAO代購",
@@ -59,7 +55,7 @@ async function main() {
   for (const [index, [name, slug, description]] of categorySeed.entries()) {
     const category = await prisma.category.upsert({
       where: { slug },
-      update: { name, description, sortOrder: index },
+      update: {},
       create: { name, slug, description, sortOrder: index }
     });
     categories[slug] = category.id;
@@ -67,14 +63,7 @@ async function main() {
 
   await prisma.banner.upsert({
     where: { id: "seed-banner-main" },
-    update: {
-      title: "雙子日本代購",
-      subtitle: "私訊確認商品後安排登記採買，訂金與餘額流程清楚透明。",
-      imageUrl: "/images/home-order-guide.jpg",
-      linkUrl: "/search",
-      isActive: true,
-      sortOrder: 0
-    },
+    update: {},
     create: {
       id: "seed-banner-main",
       title: "雙子日本代購",
@@ -88,14 +77,7 @@ async function main() {
 
   await prisma.banner.upsert({
     where: { id: "seed-banner-beauty" },
-    update: {
-      title: "日本藥妝與美妝精選",
-      subtitle: "熱門保養、彩妝、香氛與季節限定商品，可私訊確認庫存。",
-      imageUrl: images.beauty,
-      linkUrl: "/category/beauty",
-      isActive: true,
-      sortOrder: 1
-    },
+    update: {},
     create: {
       id: "seed-banner-beauty",
       title: "日本藥妝與美妝精選",
@@ -109,14 +91,7 @@ async function main() {
 
   await prisma.banner.upsert({
     where: { id: "seed-banner-snacks" },
-    update: {
-      title: "伴手禮與限定零食",
-      subtitle: "北海道、便利商店、期間限定口味，適合送禮或自己收藏。",
-      imageUrl: images.snacks,
-      linkUrl: "/category/snacks",
-      isActive: true,
-      sortOrder: 2
-    },
+    update: {},
     create: {
       id: "seed-banner-snacks",
       title: "伴手禮與限定零食",
@@ -263,7 +238,7 @@ async function main() {
     const { image, ...data } = product;
     await prisma.product.upsert({
       where: { slug: data.slug },
-      update: data,
+      update: {},
       create: {
         ...data,
         status: "ACTIVE",

@@ -22,9 +22,11 @@ const fallbackBanner: HomeBanner = {
 };
 
 export function HomeCarousel({ banners }: { banners: HomeBanner[] }) {
-  const slides = banners.length ? banners : [fallbackBanner];
+  const seededBanners = banners.filter((banner) => banner.id !== fallbackBanner.id && banner.imageUrl !== fallbackBanner.imageUrl);
+  const slides = [fallbackBanner, ...seededBanners];
   const [active, setActive] = useState(0);
   const current = slides[active];
+  const isGuideSlide = current.imageUrl === fallbackBanner.imageUrl;
 
   useEffect(() => {
     if (slides.length <= 1) return;
@@ -39,7 +41,7 @@ export function HomeCarousel({ banners }: { banners: HomeBanner[] }) {
   }
 
   return (
-    <div className="relative min-h-[340px] overflow-hidden rounded-lg bg-neutral-100">
+    <div className={`relative min-h-[520px] overflow-hidden rounded-lg sm:min-h-[560px] lg:min-h-[560px] ${isGuideSlide ? "bg-[#ffd9aa]" : "bg-neutral-100"}`}>
       {slides.map((slide, index) => (
         <Link
           key={slide.id}
@@ -53,18 +55,20 @@ export function HomeCarousel({ banners }: { banners: HomeBanner[] }) {
             fill
             priority={index === 0}
             sizes="(max-width: 1024px) 100vw, 66vw"
-            className="object-cover"
+            className={slide.imageUrl === fallbackBanner.imageUrl ? "object-contain" : "object-cover"}
           />
         </Link>
       ))}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
-      <div className="pointer-events-none absolute bottom-0 left-0 max-w-xl p-8 text-white">
-        <p className="text-sm font-medium">日本現貨與可預約商品</p>
-        <h1 className="mt-3 text-4xl font-semibold tracking-normal sm:text-5xl">{current.title}</h1>
-        <p className="mt-4 text-sm leading-6 text-white/85">
-          {current.subtitle || "精選日本美妝、藥妝、零食、3C 與生活好物。僅展示目錄，諮詢後確認代購。"}
-        </p>
-      </div>
+      {!isGuideSlide && <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />}
+      {!isGuideSlide && (
+        <div className="pointer-events-none absolute bottom-0 left-0 max-w-xl p-8 text-white">
+          <p className="text-sm font-medium">日本現貨與可預約商品</p>
+          <h1 className="mt-3 text-4xl font-semibold tracking-normal sm:text-5xl">{current.title}</h1>
+          <p className="mt-4 text-sm leading-6 text-white/85">
+            {current.subtitle || "精選日本美妝、藥妝、零食、3C 與生活好物。僅展示目錄，諮詢後確認代購。"}
+          </p>
+        </div>
+      )}
       {slides.length > 1 && (
         <>
           <button
