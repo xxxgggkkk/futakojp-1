@@ -10,7 +10,7 @@
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
     "db:generate": "prisma generate",
-    "vercel-build": "cp prisma/schema.postgres.prisma prisma/schema.prisma && prisma generate && next build"
+    "vercel-build": "cp prisma/schema.postgres.prisma prisma/schema.prisma && prisma generate && prisma db push && tsx prisma/seed.ts && next build"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
