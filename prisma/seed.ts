@@ -86,6 +86,48 @@ async function main() {
     }
   });
 
+  await prisma.banner.upsert({
+    where: { id: "seed-banner-beauty" },
+    update: {
+      title: "日本藥妝與美妝精選",
+      subtitle: "熱門保養、彩妝、香氛與季節限定商品，可私訊確認庫存。",
+      imageUrl: images.beauty,
+      linkUrl: "/category/beauty",
+      isActive: true,
+      sortOrder: 1
+    },
+    create: {
+      id: "seed-banner-beauty",
+      title: "日本藥妝與美妝精選",
+      subtitle: "熱門保養、彩妝、香氛與季節限定商品，可私訊確認庫存。",
+      imageUrl: images.beauty,
+      linkUrl: "/category/beauty",
+      isActive: true,
+      sortOrder: 1
+    }
+  });
+
+  await prisma.banner.upsert({
+    where: { id: "seed-banner-snacks" },
+    update: {
+      title: "伴手禮與限定零食",
+      subtitle: "北海道、便利商店、期間限定口味，適合送禮或自己收藏。",
+      imageUrl: images.snacks,
+      linkUrl: "/category/snacks",
+      isActive: true,
+      sortOrder: 2
+    },
+    create: {
+      id: "seed-banner-snacks",
+      title: "伴手禮與限定零食",
+      subtitle: "北海道、便利商店、期間限定口味，適合送禮或自己收藏。",
+      imageUrl: images.snacks,
+      linkUrl: "/category/snacks",
+      isActive: true,
+      sortOrder: 2
+    }
+  });
+
   const products = [
     {
       name: "資生堂 Elixir 怡麗絲爾防曬乳",

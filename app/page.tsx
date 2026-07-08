@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { HomeCarousel } from "@/components/HomeCarousel";
 import { ProductCard } from "@/components/ProductCard";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ContactPanel } from "@/components/ContactPanel";
@@ -13,7 +13,13 @@ export default async function HomePage() {
     getActiveProducts({ hot: true, take: 8 }),
     getCategories()
   ]);
-  const hero = banners[0];
+  const carouselBanners = banners.map((banner) => ({
+    id: banner.id,
+    title: banner.title,
+    subtitle: banner.subtitle,
+    imageUrl: banner.imageUrl,
+    linkUrl: banner.linkUrl
+  }));
 
   return (
     <>
@@ -21,23 +27,7 @@ export default async function HomePage() {
       <main>
         <section className="bg-white">
           <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[1.6fr_1fr] lg:px-8">
-            <Link href={hero?.linkUrl || "#latest"} className="relative min-h-[340px] overflow-hidden rounded-lg bg-neutral-100">
-              <Image
-                src={hero?.imageUrl || "/images/home-order-guide.jpg"}
-                alt={hero?.title || "雙子日本代購下單流程"}
-                fill
-                priority
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 max-w-xl p-8 text-white">
-                <p className="text-sm font-medium">日本現貨與可預約商品</p>
-                <h1 className="mt-3 text-4xl font-semibold tracking-normal sm:text-5xl">{hero?.title || "GAO代購"}</h1>
-                <p className="mt-4 text-sm leading-6 text-white/85">
-                  {hero?.subtitle || "精選日本美妝、藥妝、零食、3C 與生活好物。僅展示目錄，諮詢後確認代購。"}
-                </p>
-              </div>
-            </Link>
+            <HomeCarousel banners={carouselBanners} />
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
               {categories.slice(0, 4).map((category, index) => (
                 <Link
