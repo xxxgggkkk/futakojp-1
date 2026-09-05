@@ -60,8 +60,8 @@ export async function saveProductAction(formData: FormData) {
     notes: getString(formData, "notes")
   };
 
-  if (id) {
-    await prisma.product.update({
+  const product = id
+    ? await prisma.product.update({
       where: { id },
       data: {
         ...data,
@@ -70,9 +70,8 @@ export async function saveProductAction(formData: FormData) {
           create: urls.map((url, index) => ({ url, alt: name, sortOrder: index }))
         }
       }
-    });
-  } else {
-    await prisma.product.create({
+    })
+    : await prisma.product.create({
       data: {
         ...data,
         images: {
@@ -80,9 +79,11 @@ export async function saveProductAction(formData: FormData) {
         }
       }
     });
-  }
 
   revalidatePath("/");
+  revalidatePath("/search");
+  revalidatePath(`/products/${product.id}`);
+  revalidatePath(`/products/${product.slug}`);
   revalidatePath("/admin/products");
   redirect("/admin/products");
 }
@@ -98,8 +99,11 @@ export async function toggleProductStatusAction(formData: FormData) {
   await requireAdmin();
   const id = getString(formData, "id");
   const status = getString(formData, "status") === "ACTIVE" ? "INACTIVE" : "ACTIVE";
-  await prisma.product.update({ where: { id }, data: { status } });
+  const product = await prisma.product.update({ where: { id }, data: { status } });
   revalidatePath("/");
+  revalidatePath("/search");
+  revalidatePath(`/products/${product.id}`);
+  revalidatePath(`/products/${product.slug}`);
   revalidatePath("/admin/products");
 }
 

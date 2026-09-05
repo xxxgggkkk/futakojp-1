@@ -4,6 +4,8 @@ import { SearchBox } from "@/components/SearchBox";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getActiveProducts } from "@/lib/queries";
 
+export const dynamic = "force-dynamic";
+
 export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   const { q = "" } = await searchParams;
   const products = await getActiveProducts({ query: q });

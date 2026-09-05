@@ -7,6 +7,8 @@ import { formatTwd, stockLabel } from "@/lib/format";
 import { productInclude } from "@/lib/queries";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const product = await prisma.product.findFirst({

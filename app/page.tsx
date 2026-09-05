@@ -10,6 +10,8 @@ const lineCommunityUrl = "https://tinyurl.com/ndcfxdcw";
 const lineOfficialUrl = "https://lin.ee/zJWlulk";
 const instagramUrl = "https://www.instagram.com/futako_japan";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const [latest, recommended, hot, categories] = await Promise.all([
     getActiveProducts({ take: 12 }),
