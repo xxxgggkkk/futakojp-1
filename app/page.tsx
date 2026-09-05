@@ -25,7 +25,7 @@ export default function HomePage() {
       <main>
         <section className="bg-[#fbf7f1]">
           <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-12">
-            <div className="flex min-h-[560px] flex-col justify-between rounded-lg border border-[#ead8c4] bg-white p-6 shadow-soft sm:p-8">
+            <div className="flex flex-col rounded-lg border border-[#ead8c4] bg-white p-6 shadow-soft sm:p-8">
               <div>
                 <div className="mb-8 flex items-center gap-3 text-sm font-semibold text-[#8c6f59]">
                   <Sparkles className="h-4 w-4" />
@@ -39,7 +39,17 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="mt-10 grid gap-3 sm:grid-cols-3">
+              <div className="mt-8 rounded-lg border border-[#ead8c4] bg-[#fffaf4] p-5">
+                <p className="text-sm font-semibold text-[#8c6f59]">社群公告重點</p>
+                <div className="mt-4 grid gap-3 text-sm leading-7 text-muted sm:grid-cols-2">
+                  <p>現貨商品可快速出貨，數量有限，先搶先贏。</p>
+                  <p>預購商品、熱門款式與熱門尺寸可能很快缺貨。</p>
+                  <p>若想趕上出貨日，建議提早詢問及下單。</p>
+                  <p>官方 Line 無法加入時，請私訊 IG 或搜尋 ID。</p>
+                </div>
+              </div>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-3">
                 <ContactLink
                   href={lineCommunityUrl}
                   icon={<MessageCircle className="mb-5 h-6 w-6" />}
