@@ -30,7 +30,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const product = await prisma.product.findFirst({
     where: {
-      status: "ACTIVE",
       OR: [{ slug }, { id: slug }]
     },
     include: productInclude

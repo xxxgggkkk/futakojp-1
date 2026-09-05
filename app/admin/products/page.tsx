@@ -28,6 +28,7 @@ export default async function ProductsPage() {
               <p className="mt-2 text-xs text-muted">{statusLabel(product.status)} · {stockLabel(product.stockStatus)}</p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
+              <Link href={`/products/${product.id}`} className="rounded-md border border-line px-3 py-2 text-sm text-ink hover:border-ink">查看</Link>
               <Link href={`/admin/products/${product.id}/edit`} className="rounded-md border border-line px-3 py-2 text-sm text-ink hover:border-ink">編輯</Link>
               <form action={toggleProductStatusAction}>
                 <input type="hidden" name="id" value={product.id} />
