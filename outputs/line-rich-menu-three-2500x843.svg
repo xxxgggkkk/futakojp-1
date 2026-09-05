@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2500" height="843" viewBox="0 0 2500 843">
+  <style>
+    text {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    }
+  </style>
+  <rect width="2500" height="843" fill="#F1D7BB"/>
+  
+    <g transform="translate(0, 0)">
+      <rect width="833.3333333333334" height="843" fill="#F4DDC3"/>
+      <rect x="58" y="60" width="717.3333333333334" height="720" rx="46" fill="#FFF9F0" opacity="0.78"/>
+      <path d="M92 720 C188 672 218 752 318 702 C408 658 458 724 550 684 C636 646 690 680 746 648"
+        fill="none" stroke="#9B6B4D" stroke-width="9" stroke-linecap="round" opacity="0.12"/>
+      <circle cx="236" cy="246" r="148" fill="#9B6B4D" opacity="0.1"/>
+      <g transform="translate(0, 0)">
+      <path d="M132 196 H306 L288 396 H150 Z" fill="#FFF9F0" stroke="#9B6B4D" stroke-width="12" stroke-linejoin="round"/>
+      <path d="M174 198 C176 128 262 128 264 198" fill="none" stroke="#9B6B4D" stroke-width="12" stroke-linecap="round"/>
+      <path d="M170 265 H286" stroke="#9B6B4D" stroke-width="9" stroke-linecap="round" opacity="0.38"/>
+      <circle cx="198" cy="238" r="8" fill="#9B6B4D"/>
+      <circle cx="260" cy="238" r="8" fill="#9B6B4D"/>
+    </g>
+      <text x="100" y="492" fill="#9B6B4D" font-size="32" font-weight="800" letter-spacing="4">ORDER FLOW</text>
+      <text x="96" y="585" fill="#3F2A23" font-size="88" font-weight="850" letter-spacing="0">代購流程</text>
+      <path d="M100 628 H699.3333333333334" stroke="#9B6B4D" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+      <text x="102" y="694" fill="#5C463A" font-size="36" font-weight="620" letter-spacing="0">
+    <tspan x="102" dy="0">私訊想要的商品</tspan><tspan x="102" dy="51.12">確認尺寸 / 款式 / 色號</tspan><tspan x="102" dy="51.12">支付 50% 訂金後安排採買</tspan>
+  </text>
+    </g>
+  
+    <g transform="translate(833.3333333333334, 0)">
+      <rect width="833.3333333333334" height="843" fill="#EFE3D2"/>
+      <rect x="58" y="60" width="717.3333333333334" height="720" rx="46" fill="#FFF9F0" opacity="0.78"/>
+      <path d="M92 720 C188 672 218 752 318 702 C408 658 458 724 550 684 C636 646 690 680 746 648"
+        fill="none" stroke="#8C7562" stroke-width="9" stroke-linecap="round" opacity="0.12"/>
+      <circle cx="236" cy="246" r="148" fill="#8C7562" opacity="0.1"/>
+      <g transform="translate(0, 0)">
+      <path d="M122 202 L224 146 L326 202 L224 260 Z" fill="#FFF9F0" stroke="#8C7562" stroke-width="12" stroke-linejoin="round"/>
+      <path d="M122 202 V326 L224 388 V260 Z" fill="#F4DEC5" stroke="#8C7562" stroke-width="12" stroke-linejoin="round"/>
+      <path d="M326 202 V326 L224 388 V260 Z" fill="#FFF3E5" stroke="#8C7562" stroke-width="12" stroke-linejoin="round"/>
+      <path d="M176 176 L278 232" stroke="#8C7562" stroke-width="9" stroke-linecap="round" opacity="0.42"/>
+    </g>
+      <text x="100" y="492" fill="#8C7562" font-size="32" font-weight="800" letter-spacing="4">SHIPPING TIME</text>
+      <text x="96" y="585" fill="#3F2A23" font-size="88" font-weight="850" letter-spacing="0">出貨時間</text>
+      <path d="M100 628 H699.3333333333334" stroke="#8C7562" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+      <text x="102" y="694" fill="#5C463A" font-size="36" font-weight="620" letter-spacing="0">
+    <tspan x="102" dy="0">日本每月約 2 次寄出</tspan><tspan x="102" dy="51.12">抵台後 2～3 天安排賣貨便</tspan><tspan x="102" dy="51.12">實際時間會另行通知</tspan>
+  </text>
+    </g>
+  
+    <g transform="translate(1666.6666666666667, 0)">
+      <rect width="833.3333333333334" height="843" fill="#F7E5D6"/>
+      <rect x="58" y="60" width="717.3333333333334" height="720" rx="46" fill="#FFF9F0" opacity="0.78"/>
+      <path d="M92 720 C188 672 218 752 318 702 C408 658 458 724 550 684 C636 646 690 680 746 648"
+        fill="none" stroke="#A96A66" stroke-width="9" stroke-linecap="round" opacity="0.12"/>
+      <circle cx="236" cy="246" r="148" fill="#A96A66" opacity="0.1"/>
+      <g transform="translate(0, 0)">
+    <defs>
+      <linearGradient id="igSmall" x1="130" y1="355" x2="330" y2="130" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#E9B879"/>
+        <stop offset="0.38" stop-color="#D68A76"/>
+        <stop offset="0.68" stop-color="#B77E91"/>
+        <stop offset="1" stop-color="#927A9D"/>
+      </linearGradient>
+    </defs>
+    <rect x="126" y="126" width="222" height="222" rx="64" fill="url(#igSmall)"/>
+    <rect x="176" y="176" width="122" height="122" rx="35" fill="none" stroke="#FFF9F0" stroke-width="18"/>
+    <circle cx="237" cy="237" r="30" fill="none" stroke="#FFF9F0" stroke-width="18"/>
+    <circle cx="284" cy="190" r="12" fill="#FFF9F0"/>
+  </g>
+      <text x="100" y="492" fill="#A96A66" font-size="32" font-weight="800" letter-spacing="4">INSTAGRAM</text>
+      <text x="96" y="585" fill="#3F2A23" font-size="88" font-weight="850" letter-spacing="0">IG 連結</text>
+      <path d="M100 628 H699.3333333333334" stroke="#A96A66" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+      <text x="102" y="694" fill="#5C463A" font-size="36" font-weight="620" letter-spacing="0">
+    <tspan x="102" dy="0">點我前往 Instagram</tspan><tspan x="102" dy="51.12">歡迎私訊詢問代購</tspan>
+  </text>
+    </g>
+  
+  <path d="M833.3333333333334 44 V799 M1666.6666666666667 44 V799" stroke="#D6B89D" stroke-width="4" opacity="0.42"/>
+  <text x="1250" y="39" text-anchor="middle" fill="#8B6E5C" font-size="25" font-weight="700" letter-spacing="5">FUTAGO JAPAN SELECT</text>
+</svg>

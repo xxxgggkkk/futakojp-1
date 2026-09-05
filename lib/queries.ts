@@ -12,9 +12,11 @@ export async function getSiteSetting() {
     update: {},
     create: {
       id: "site",
-      siteName: "GAO代購",
-      wechatId: "gao-daigou",
-      lineId: "gao-daigou"
+      siteName: "雙子日本代購",
+      metaTitle: "雙子日本代購｜LINE 社群與日本代購說明",
+      metaDescription: "雙子日本代購以 LINE 社群發布新品、收單時間與連線公告，網站提供代購流程、出貨時間、IG 與官方私訊入口。",
+      wechatId: "futako_japan",
+      lineId: "@199fewmc"
     }
   });
 }
