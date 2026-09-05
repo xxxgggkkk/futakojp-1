@@ -9,10 +9,28 @@ import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+function resolveSlug(value: string | string[]) {
+  return Array.isArray(value) ? value.join("/") : value;
+}
+
+function productLookup(slug: string) {
+  let decoded = slug;
+  try {
+    decoded = decodeURIComponent(slug);
+  } catch {
+    decoded = slug;
+  }
+  const values = Array.from(new Set([slug, decoded]));
+  return {
+    OR: values.flatMap((value) => [{ slug: value }, { id: value }])
+  };
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }) {
+  const { slug: slugParam } = await params;
+  const slug = resolveSlug(slugParam);
   const product = await prisma.product.findFirst({
-    where: { OR: [{ slug }, { id: slug }] },
+    where: productLookup(slug),
     include: { category: true }
   });
   if (!product) return {};
@@ -26,12 +44,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function ProductPage({ params }: { params: Promise<{ slug: string[] }> }) {
+  const { slug: slugParam } = await params;
+  const slug = resolveSlug(slugParam);
   const product = await prisma.product.findFirst({
-    where: {
-      OR: [{ slug }, { id: slug }]
-    },
+    where: productLookup(slug),
     include: productInclude
   });
   if (!product) notFound();
