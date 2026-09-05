@@ -15,13 +15,18 @@ const images = {
 };
 
 async function main() {
-  const password = process.env.ADMIN_PASSWORD || "admin123456";
+  const adminEmail = process.env.ADMIN_EMAIL || "gaoke380@gmail.com";
+  const password = process.env.ADMIN_PASSWORD || "Gao123456";
+  const passwordHash = await bcrypt.hash(password, 12);
+
   await prisma.admin.upsert({
-    where: { email: process.env.ADMIN_EMAIL || "admin@example.com" },
-    update: {},
+    where: { email: adminEmail },
+    update: {
+      passwordHash
+    },
     create: {
-      email: process.env.ADMIN_EMAIL || "admin@example.com",
-      passwordHash: await bcrypt.hash(password, 12)
+      email: adminEmail,
+      passwordHash
     }
   });
 

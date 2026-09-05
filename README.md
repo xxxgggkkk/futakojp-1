@@ -54,8 +54,8 @@ npm run dev
 ## 預設後台
 
 - 後台地址：`/admin`
-- 預設 Email：`admin@example.com`
-- 預設密碼：`admin123456`
+- 預設 Email：`gaoke380@gmail.com`
+- 預設密碼：`Gao123456`
 
 如果你在 `.env` 中設定了 `ADMIN_EMAIL` 和 `ADMIN_PASSWORD`，種子資料會使用你的設定。
 
