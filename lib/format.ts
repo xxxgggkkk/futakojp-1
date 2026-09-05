@@ -26,11 +26,12 @@ export function statusLabel(status: string) {
 }
 
 export function toSlug(input: string) {
-  return input
+  const slug = input
     .trim()
     .toLowerCase()
     .replace(/[\s_]+/g, "-")
     .replace(/[^a-z0-9\u4e00-\u9fa5-]/g, "")
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "");
+  return slug || `product-${Date.now()}`;
 }

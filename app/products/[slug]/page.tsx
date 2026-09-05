@@ -9,7 +9,10 @@ import { prisma } from "@/lib/prisma";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const product = await prisma.product.findUnique({ where: { slug }, include: { category: true } });
+  const product = await prisma.product.findFirst({
+    where: { OR: [{ slug }, { id: slug }] },
+    include: { category: true }
+  });
   if (!product) return {};
   return {
     title: product.name,
@@ -24,7 +27,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const product = await prisma.product.findFirst({
-    where: { slug, status: "ACTIVE" },
+    where: {
+      status: "ACTIVE",
+      OR: [{ slug }, { id: slug }]
+    },
     include: productInclude
   });
   if (!product) notFound();

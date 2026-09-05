@@ -11,10 +11,11 @@ type ProductWithRelations = Product & {
 
 export function ProductCard({ product }: { product: ProductWithRelations }) {
   const image = product.images[0]?.url || fallbackImages[0];
+  const detailHref = `/products/${product.id}`;
 
   return (
     <article className="group overflow-hidden rounded-lg border border-line bg-white transition hover:-translate-y-1 hover:shadow-soft">
-      <Link href={`/products/${product.slug}`} className="block">
+      <Link href={detailHref} className="block">
         <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
           <Image
             src={image}
@@ -33,7 +34,7 @@ export function ProductCard({ product }: { product: ProductWithRelations }) {
           </span>
         </div>
         <div>
-          <Link href={`/products/${product.slug}`} className="line-clamp-2 text-sm font-semibold text-ink hover:text-gold">
+          <Link href={detailHref} className="line-clamp-2 text-sm font-semibold text-ink hover:text-gold">
             {product.name}
           </Link>
           <p className="mt-1 line-clamp-1 text-xs text-muted">{product.brand}</p>
@@ -41,7 +42,7 @@ export function ProductCard({ product }: { product: ProductWithRelations }) {
         <div className="flex items-center justify-between">
           <strong className="text-base text-ink">{formatTwd(product.priceJpy)}</strong>
           <Link
-            href={`/products/${product.slug}`}
+            href={detailHref}
             className="rounded-md bg-ink px-3 py-2 text-xs font-medium text-white transition hover:bg-gold"
           >
             查看詳情
