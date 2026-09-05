@@ -11,6 +11,7 @@ import {
   Sparkles
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
+import { lineProductPosts } from "@/data/line-products";
 
 const lineCommunityUrl = "https://tinyurl.com/ndcfxdcw";
 const lineOfficialUrl = "https://lin.ee/zJWlulk";
@@ -134,6 +135,50 @@ export default function HomePage() {
                 "違禁品、管制物品或需特殊資質的商品不接。"
               ]}
             />
+          </div>
+        </section>
+
+        <section className="bg-[#fbf7f1]">
+          <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+            <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold text-[#8c6f59]">LINE 社群商品消息</p>
+                <h2 className="mt-2 text-3xl font-semibold text-ink">社群已公告商品</h2>
+              </div>
+              <a
+                href={lineCommunityUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#8c6f59] hover:text-ink"
+              >
+                查看 LINE 社群
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {lineProductPosts.map((post) => (
+                <article key={post.id} className="flex min-h-[300px] flex-col rounded-lg border border-[#ead8c4] bg-white p-5">
+                  <div className="flex items-start justify-between gap-3">
+                    <span className="rounded-full bg-[#fff4e8] px-3 py-1 text-xs font-semibold text-[#8c6f59]">
+                      {post.status}
+                    </span>
+                    <span className="text-xs text-muted">{post.date}</span>
+                  </div>
+                  <h3 className="mt-4 line-clamp-2 text-xl font-semibold leading-7 text-ink">{post.title}</h3>
+                  {post.price ? <p className="mt-3 text-lg font-semibold text-[#8c6f59]">{post.price}</p> : null}
+                  <p className="mt-4 line-clamp-6 flex-1 text-sm leading-7 text-muted">{post.body}</p>
+                  <a
+                    href={lineOfficialUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-5 inline-flex items-center justify-center gap-2 rounded-md bg-ink px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#6f533f]"
+                  >
+                    私訊詢問
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       </main>
