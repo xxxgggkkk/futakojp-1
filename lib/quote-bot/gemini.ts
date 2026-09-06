@@ -4,6 +4,12 @@ type GeminiResponse = {
   candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
 };
 
+type GeminiModel = {
+  name?: string;
+  supportedGenerationMethods?: string[];
+  supportedActions?: string[];
+};
+
 const responseSchema = {
   type: "OBJECT",
   properties: {
@@ -43,8 +49,8 @@ function parseClues(text: string | undefined): ProductClues {
   }
 }
 
-async function askGemini(parts: Array<Record<string, unknown>>, apiKey: string, model: string) {
-  const response = await fetch(
+async function generate(parts: Array<Record<string, unknown>>, apiKey: string, model: string) {
+  return fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,
     {
       method: "POST",
@@ -59,6 +65,28 @@ async function askGemini(parts: Array<Record<string, unknown>>, apiKey: string, 
       }),
     },
   );
+}
+
+async function availableFlashModel(apiKey: string): Promise<string | undefined> {
+  const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000", {
+    headers: { "x-goog-api-key": apiKey },
+    cache: "no-store",
+  });
+  if (!response.ok) return undefined;
+  const result = await response.json() as { models?: GeminiModel[] };
+  return result.models
+    ?.filter((item) => [...(item.supportedGenerationMethods ?? []), ...(item.supportedActions ?? [])].includes("generateContent"))
+    .map((item) => item.name?.replace(/^models\//, ""))
+    .filter((name): name is string => Boolean(name?.includes("gemini") && name.includes("flash")))
+    .sort((a, b) => b.localeCompare(a, undefined, { numeric: true }))[0];
+}
+
+async function askGemini(parts: Array<Record<string, unknown>>, apiKey: string, model: string) {
+  let response = await generate(parts, apiKey, model);
+  if (response.status === 404) {
+    const fallback = await availableFlashModel(apiKey);
+    if (fallback && fallback !== model) response = await generate(parts, apiKey, fallback);
+  }
 
   if (!response.ok) throw new Error(`Gemini identification failed: ${response.status}`);
   const result = await response.json() as GeminiResponse;
