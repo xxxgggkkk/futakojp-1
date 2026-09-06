@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { getSiteSetting } from "@/lib/queries";
+import { QuoteBot } from "@/components/QuoteBot";
 
 export async function generateMetadata(): Promise<Metadata> {
   const setting = await getSiteSetting();
@@ -26,7 +27,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-TW">
-      <body>{children}</body>
+      <body>
+        {children}
+        <QuoteBot />
+      </body>
     </html>
   );
 }

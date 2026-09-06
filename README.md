@@ -9,6 +9,7 @@
 - 後台：管理員登入、商品新增/編輯/刪除/上架/下架、分類管理、Banner 管理、網站設定。
 - 圖片：支援 JPG、PNG、WEBP，多圖上傳、拖曳上傳、預覽。
 - SEO：自訂標題、Meta Description、Open Graph、`sitemap.xml`、`robots.txt`。
+- 自動報價：全站右下角聊天入口，支援商品圖片或商品名稱查詢日本售價，並換算台幣報價。
 
 ## 技术栈
 
@@ -83,6 +84,10 @@ ADMIN_PASSWORD="你的強密碼"
 AUTH_SECRET="一段足夠長的隨機字串"
 NEXT_PUBLIC_SITE_URL="你的 Vercel 網址"
 BLOB_READ_WRITE_TOKEN="Vercel Blob 自動生成，可選"
+GEMINI_API_KEY="Google AI Studio API Key"
+SERPAPI_API_KEY="SerpApi API Key"
+GEMINI_MODEL="gemini-2.5-flash"
+AUTO_QUOTE_MIN_SCORE="0.82"
 ```
 
 不要在正式部署環境設定 `BLOCK_PUBLIC_ADMIN=true`，否則公開後台會被攔截。這個變數只用於臨時本地展示。
@@ -94,6 +99,8 @@ npm run vercel-build
 ```
 
 部署完成後，線上資料庫會在建置流程中自動初始化。後台上傳圖片時，如果存在 `BLOB_READ_WRITE_TOKEN`，圖片會儲存到 Vercel Blob；本地開發沒有這個 token 時，會繼續儲存到 `public/uploads`。
+
+自動報價的計算公式為 `((JPY + 440) × 0.2020 × 1.015) + 500`，結果四捨五入為整數台幣。圖片查價必須設定 Gemini、SerpApi 與 Vercel Blob；純文字查價需要 Gemini 與 SerpApi。所有金鑰只在伺服器端使用。
 
 ## 切換 PostgreSQL
 
