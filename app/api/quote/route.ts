@@ -2,7 +2,7 @@ import { del, put } from "@vercel/blob";
 import { NextResponse } from "next/server";
 import { identifyProduct, identifyProductText, productSearchQuery } from "@/lib/quote-bot/gemini";
 import { searchByImage, searchByText } from "@/lib/quote-bot/search";
-import type { QuoteCandidate } from "@/lib/quote-bot/types";
+import type { ProductClues, QuoteCandidate } from "@/lib/quote-bot/types";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -10,6 +10,7 @@ export const maxDuration = 60;
 const allowedTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
 const recentRequests = new Map<string, number[]>();
 const generalMessages = /^(?:(?:你|您)?好(?:呀|啊)?|嗨|哈囉|hello|hi|謝謝|感謝|在嗎|有人嗎|請問|怎么了|怎麼了)[!！?？。\s]*$/i;
+const unknownProduct: ProductClues = { isProduct: true, confidence: 0, keywords: [] };
 
 function limited(request: Request) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
@@ -58,7 +59,12 @@ export async function POST(request: Request) {
     if (image) {
       if (!blobToken) return NextResponse.json({ error: "圖片辨識服務尚未完成設定。" }, { status: 503 });
       const bytes = await image.arrayBuffer();
-      identified = await identifyProduct(bytes, image.type, geminiKey, model);
+      try {
+        identified = await identifyProduct(bytes, image.type, geminiKey, model);
+      } catch (error) {
+        console.warn("Gemini image identification unavailable; continuing with Lens", error);
+        identified = unknownProduct;
+      }
       if (!identified.isProduct && identified.confidence >= 0.7) {
         return NextResponse.json({ status: "not-product", message: "這張圖片不像商品圖片。請改傳能清楚看到商品、品牌標誌或型號的照片。" });
       }
@@ -71,7 +77,12 @@ export async function POST(request: Request) {
       const refinedMatches = query ? await searchByImage(blob.url, query, serpKey) : [];
       imageCandidates = mergeCandidates(rawMatches, refinedMatches);
     } else {
-      identified = await identifyProductText(text, geminiKey, model);
+      try {
+        identified = await identifyProductText(text, geminiKey, model);
+      } catch (error) {
+        console.warn("Gemini text identification unavailable; continuing with direct search", error);
+        identified = unknownProduct;
+      }
       if (!identified.isProduct && identified.confidence >= 0.6) {
         return NextResponse.json({ status: "not-product", message: "報價機器人只處理商品查價。請輸入品牌、商品名稱或型號。" });
       }
